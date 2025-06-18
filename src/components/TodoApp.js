@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 
-const username = "juanma123"; // Cambia esto por tu username
+const username = "Juanma-venom";
 const API_URL = `https://playground.4geeks.com/todo/todos/${Juanma-venom}`;
 
 const TodoApp = () => {
   const [tasks, setTasks] = useState([]);
   const [input, setInput] = useState("");
 
-  // Crear usuario si no existe
   useEffect(() => {
     fetch(API_URL, {
       method: "POST",
