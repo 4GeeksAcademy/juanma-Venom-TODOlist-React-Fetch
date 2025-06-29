@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const username = "Juanma-venom";
-const API_URL = `https://assets.breatheco.de/apis/fake/todos/user/${username}`;
+const API_URL = `http://localhost:8080/https://assets.breatheco.de/apis/fake/todos/user/${username}`;
 
 const TodoApp = () => {
   const [tasks, setTasks] = useState([]);
