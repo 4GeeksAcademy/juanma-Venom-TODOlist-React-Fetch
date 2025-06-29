@@ -1,35 +1,35 @@
 import React, { useEffect, useState } from "react";
 
 const username = "Juanma-venom";
-const API_URL = `https://playground.4geeks.com/apis/fake/todos/user/${username}`;
+const API_URL = `https://assets.breatheco.de/apis/fake/todos/user/${username}`;
 
 const TodoApp = () => {
   const [tasks, setTasks] = useState([]);
   const [input, setInput] = useState("");
 
   useEffect(() => {
-    fetch('https://playground.4geeks.com/todos/user/Juanma-venom', {
+    fetch(API_URL, {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json'
   },
-  body: JSON.stringify({})
+  body: JSON.stringify([])
 })
       .then((res) => {
-        if (res.status === 201 || res.status === 200) {
-          console.log("Usuario creado");
-          return getTasks();
-        } else if (res.status === 400) {
-          console.log("Usuario ya existe, cargando tareas");
-          return getTasks();
-        } else {
-          throw new Error("Error creando usuario");
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, []);
+      if (res.status === 201 || res.status === 200) {
+        console.log("Usuario creado");
+        return getTasks();
+      } else if (res.status === 400) {
+        console.log("Usuario ya existe, cargando tareas");
+        return getTasks();
+      } else {
+        throw new Error("Error creando usuario");
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+}, []);
 
   const getTasks = () => {
     fetch(API_URL)
