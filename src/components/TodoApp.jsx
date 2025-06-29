@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
 
 const username = "Juanma-venom";
-const API_URL = `https://playground.4geeks.com/todos/todos/${username}`;
+const API_URL = `https://playground.4geeks.com/apis/fake/todos/user/${Juanma-venom}`;
 
 const TodoApp = () => {
   const [tasks, setTasks] = useState([]);
   const [input, setInput] = useState("");
 
   useEffect(() => {
-    fetch('https://playground.4geeks.com/todos/users/Juanma-venom', {
+    fetch('https://playground.4geeks.com/todos/user/Juanma-venom', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json'
   },
-  body: JSON.stringify({ username: "Juanma-venom" })
+  body: JSON.stringify({})
 })
       .then((res) => {
         if (res.status === 201 || res.status === 200) {
@@ -80,7 +80,6 @@ const TodoApp = () => {
   };
 
   const clearAllTasks = () => {
-    // Usar Promise.all para borrar todas las tareas en paralelo y luego actualizar
     Promise.all(
       tasks.map((task) =>
         fetch(`${API_URL}/${task.id}`, {
