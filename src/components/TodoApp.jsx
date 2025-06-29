@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 
 const username = "Juanma-venom";
-const API_URL = `https://shiny-couscous-p96jwpvr5g73rr9q-8080.app.github.dev/https://assets.breatheco.de/apis/fake/todos/user/${username}`;
+const API_URL = `https://assets.breatheco.de/apis/fake/todos/user/${username}`;
 
 const TodoApp = () => {
   const [tasks, setTasks] = useState([]);
   const [input, setInput] = useState("");
 
   useEffect(() => {
-    fetch(API_URL, {
+   fetch(`https://assets.breatheco.de/apis/fake/todos/user/${username}`, {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json'
