@@ -1,25 +1,25 @@
 import React, { useEffect, useState } from "react";
 
 const username = "Juanma-venom";
-const API_URL = `https://playground.4geeks.com/todo/todos/${username}`;
+const API_URL = `https://playground.4geeks.com/todos/todos/${username}`;
 
 const TodoApp = () => {
   const [tasks, setTasks] = useState([]);
   const [input, setInput] = useState("");
 
   useEffect(() => {
-    // Crear usuario solo si no existe (el servidor devuelve 400 si ya está creado)
-    fetch(`https://playground.4geeks.com/todo/users/${username}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-    })
+    fetch('https://playground.4geeks.com/todos/users/Juanma-venom', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({ username: "Juanma-venom" })
+})
       .then((res) => {
         if (res.status === 201 || res.status === 200) {
-          // Usuario creado exitosamente
           console.log("Usuario creado");
           return getTasks();
         } else if (res.status === 400) {
-          // Usuario ya existe, solo cargar tareas
           console.log("Usuario ya existe, cargando tareas");
           return getTasks();
         } else {
@@ -35,7 +35,7 @@ const TodoApp = () => {
     fetch(API_URL)
       .then((res) => res.json())
       .then((data) => {
-        // Validar que data es un array
+         console.log("Tareas obtenidas:", data); 
         if (Array.isArray(data)) {
           setTasks(data);
         } else {
